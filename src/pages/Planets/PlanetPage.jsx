@@ -148,6 +148,7 @@ function PlanetPage() {
               return (
                 <ShipAtPlanet
                   key={id}
+                  id={id}
                   name={name}
                   capacity={capacity}
                   pictureUrl={pictureUrl}

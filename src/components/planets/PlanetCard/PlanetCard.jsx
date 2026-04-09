@@ -11,6 +11,7 @@ function PlanetCard({
   isSelectable,
   onClick,
   isSelected,
+  disablePlanetDetails = false,
   previewPopulation,
   previewShipCount,
   isPreviewActive,
@@ -41,13 +42,13 @@ function PlanetCard({
 
   const populationDisplayValue =
     isPreviewActive && isPreviewAffected
-      ? `${currentPopulation} → ${previewPopulation}`
-      : `${currentPopulation}`;
+      ? `${currentPopulation} → ${previewPopulation} / ${maxPopulation}`
+      : `${currentPopulation} / ${maxPopulation}`;
 
   const spacecraftDisplayValue =
     isPreviewActive && isPreviewAffected
-      ? `${shipCount} → ${previewShipCount}`
-      : `${shipCount}`;
+      ? `${shipCount} → ${previewShipCount} / ${maxShipsAllowed}`
+      : `${shipCount} / ${maxShipsAllowed}`;
 
   const previewBadgeLabel = isPreviewOrigin
     ? "Origin Preview"
@@ -122,7 +123,11 @@ function PlanetCard({
         )}
       </div>
 
-      <Button variant="primary" onClick={handleNavigateDetails}>
+      <Button
+        variant="primary"
+        onClick={handleNavigateDetails}
+        disabled={disablePlanetDetails}
+      >
         View Planet Details
       </Button>
     </div>

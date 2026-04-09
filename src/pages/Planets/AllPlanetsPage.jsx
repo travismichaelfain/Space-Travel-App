@@ -70,21 +70,22 @@ function AllPlanetsPage() {
   }, [spacecrafts]);
 
   const selectedSpacecraft =
-    selectedSpacecraftId !== null
-      ? spacecrafts.find((spacecraft) => spacecraft.id === selectedSpacecraftId)
+    selectedSpacecraftId != null
+      ? spacecrafts.find(
+          (spacecraft) => spacecraft.id === selectedSpacecraftId,
+        ) || null
       : null;
+
+  const disablePlanetDetails = isDispatching && selectedSpacecraft !== null;
 
   const selectedPlanet =
     selectedPlanetId !== null
       ? planets.find((planet) => planet.id === selectedPlanetId)
       : null;
 
-  const originPlanet =
-    selectedSpacecraft !== null
-      ? planets.find(
-          (planet) => planet.id === selectedSpacecraft.currentLocation,
-        )
-      : null;
+  const originPlanet = selectedSpacecraft
+    ? planets.find((planet) => planet.id === selectedSpacecraft.currentLocation)
+    : null;
 
   const transferredPopulation =
     selectedSpacecraft && originPlanet
@@ -240,6 +241,7 @@ function AllPlanetsPage() {
                   handleSelectPlanet(planet.id);
                 }
               }}
+              disablePlanetDetails={disablePlanetDetails}
               previewPopulation={previewPopulation}
               previewShipCount={previewShipCount}
               isPreviewActive={isPreviewActive}
