@@ -1,0 +1,38 @@
+.wrapper {
+  min-height: calc(100vh - 5rem);
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+}
+
+.content {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  max-width: 32rem;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 1;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.message {
+  margin: 0;
+  color: var(--text-muted);
+  max-width: 28rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}

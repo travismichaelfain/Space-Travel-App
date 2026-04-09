@@ -1,0 +1,52 @@
+.allPlanetsPage {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  justify-items: center;
+}
+
+.allPlanetsPage h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.allPlanetsPage > button {
+  width: 16rem;
+  min-height: 3.25rem;
+}
+
+.planetList {
+  display: grid;
+  gap: 1rem;
+  align-items: stretch;
+  width: 100%;
+}
+
+@media (min-width: 40rem) {
+  .planetList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 72rem) {
+  .allPlanetsPage {
+    gap: 1.4rem;
+    transition: padding-right 220ms ease;
+  }
+
+  .allPlanetsPage.dispatchOpen {
+    padding-right: max(0rem, 24vw);
+  }
+
+  .planetList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem;
+    transition: transform 220ms ease;
+  }
+}
+
+@media (min-width: 90rem) {
+  .planetList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

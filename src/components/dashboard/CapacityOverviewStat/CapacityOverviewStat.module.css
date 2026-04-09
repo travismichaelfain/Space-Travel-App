@@ -1,0 +1,13 @@
+.capacityOverviewStat {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.capacityOverviewStat p {
+  margin: 0;
+  padding: 0.78rem 0.85rem;
+  border-radius: 0.95rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-soft);
+  border: 1px solid rgba(97, 230, 255, 0.08);
+}

@@ -1,0 +1,15 @@
+.spacecraftActions {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.spacecraftActions :global(button) {
+  min-width: 0;
+}
+
+@media (min-width: 48rem) {
+  .spacecraftActions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

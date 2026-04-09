@@ -1,0 +1,36 @@
+.wrapper {
+  min-height: 14rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.content {
+  width: min(100%, 32rem);
+  background: linear-gradient(
+    180deg,
+    rgba(12, 28, 46, 0.92),
+    rgba(8, 20, 35, 0.92)
+  );
+  border: 1px solid rgba(97, 230, 255, 0.14);
+  border-radius: 1.4rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.title {
+  margin-bottom: 0.65rem;
+  font-size: 1.35rem;
+}
+
+.message {
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.action {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}

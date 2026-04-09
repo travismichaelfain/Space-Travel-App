@@ -1,0 +1,72 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  background: rgba(2, 10, 20, 0.72);
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
+}
+
+.modal {
+  position: relative;
+  width: min(100%, 48rem);
+  max-height: calc(100vh - 4rem);
+  margin: 0 auto;
+  padding: 1.75rem 1.75rem 2rem;
+  border: 1px solid rgba(97, 230, 255, 0.18);
+  border-radius: 1.5rem;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 27, 46, 0.96),
+    rgba(6, 17, 30, 0.98)
+  );
+  box-shadow:
+    0 1.5rem 3rem rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.closeButton {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eaf6ff;
+  font-size: 1.9rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.closeButton:hover {
+  background: rgba(97, 230, 255, 0.16);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid rgba(97, 230, 255, 0.9);
+  outline-offset: 2px;
+}
+
+@media (min-width: 48rem) {
+  .overlay {
+    padding: 3rem 1.5rem;
+  }
+
+  .modal {
+    padding: 2rem;
+    max-height: calc(100vh - 6rem);
+  }
+}

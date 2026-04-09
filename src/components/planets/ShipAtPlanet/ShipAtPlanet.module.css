@@ -1,0 +1,26 @@
+.shipAtPlanet {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border-radius: 1.2rem;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 36, 60, 0.96),
+    rgba(10, 23, 39, 0.98)
+  );
+  border: 1px solid rgba(97, 230, 255, 0.12);
+  box-shadow: var(--shadow-sm);
+}
+
+.shipAtPlanet h3,
+.shipAtPlanet p {
+  margin-bottom: 0;
+}
+
+.shipAtPlanet img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 1px solid rgba(97, 230, 255, 0.1);
+}

@@ -1,0 +1,33 @@
+.planetHero {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 28, 46, 0.95),
+    rgba(8, 19, 33, 0.98)
+  );
+  border: 1px solid rgba(97, 230, 255, 0.16);
+  box-shadow: var(--shadow-md);
+}
+
+.planetHero h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+}
+
+.planetHero p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* Balanced image */
+.spacecraftImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(97, 230, 255, 0.12);
+}

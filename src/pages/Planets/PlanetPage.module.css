@@ -1,0 +1,111 @@
+.planetPage {
+  display: grid;
+  gap: 0.6rem;
+  height: calc(100vh - 6rem);
+  overflow: hidden;
+}
+
+/* Back button */
+.backButton {
+  display: block;
+  margin: 0 auto 0.3rem;
+  min-width: 7rem;
+  max-width: 9rem;
+  min-height: 2rem;
+  padding: 0.3rem 0.7rem;
+}
+
+/* LEFT SIDE CONTENT (hero + stats) */
+.planetPage > :nth-child(2),
+.planetPage > :nth-child(3) {
+  min-height: 0;
+}
+
+/* Dock container */
+.shipsAtPlanet {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 29, 48, 0.92),
+    rgba(7, 18, 32, 0.98)
+  );
+  border: 1px solid rgba(97, 230, 255, 0.14);
+  box-shadow: var(--shadow-sm);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Dock title */
+.dockTitle {
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Dock list */
+.shipList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  gap: 0.4rem;
+
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* Empty state */
+.emptyDock {
+  margin: 0;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Tablet */
+@media (min-width: 48rem) {
+  .shipList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop layout */
+@media (min-width: 72rem) {
+  .planetPage {
+    grid-template-columns: minmax(0, 1.35fr) minmax(14rem, 17rem);
+    grid-template-rows: auto 1fr auto;
+    align-items: stretch;
+  }
+
+  /* Back button full width row */
+  .planetPage > :nth-child(1) {
+    grid-column: 1 / -1;
+  }
+
+  /* Hero + image */
+  .planetPage > :nth-child(2) {
+    grid-column: 1 / 2;
+    overflow: hidden;
+  }
+
+  /* Stats */
+  .planetPage > :nth-child(3) {
+    grid-column: 1 / 2;
+  }
+
+  /* Dock */
+  .shipsAtPlanet {
+    grid-column: 2 / 3;
+    grid-row: 2 / span 2;
+    max-height: 100%;
+  }
+
+  .shipList {
+    grid-template-columns: 1fr;
+  }
+}

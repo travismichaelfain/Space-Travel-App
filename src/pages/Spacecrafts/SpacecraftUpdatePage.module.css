@@ -1,0 +1,21 @@
+.spacecraftUpdatePage {
+  display: grid;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+}
+
+.spacecraftUpdatePage form {
+  width: min(100%, 42rem);
+}

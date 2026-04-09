@@ -1,0 +1,45 @@
+.spacecraftPage {
+  display: grid;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.backButton {
+  justify-self: center;
+  min-width: 7.5rem;
+  max-width: 10rem;
+  min-height: 2.2rem;
+  padding: 0.35rem 0.8rem;
+}
+
+.spacecraftPage > div {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 52rem);
+  justify-self: center;
+}
+
+.spacecraftPage h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.spacecraftImage {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(97, 230, 255, 0.14);
+  background: linear-gradient(
+    180deg,
+    rgba(12, 29, 48, 0.92),
+    rgba(7, 18, 32, 0.98)
+  );
+  box-shadow: var(--shadow-md);
+}
+
+.spacecraftPage p {
+  margin: 0;
+}

@@ -1,0 +1,40 @@
+.missionProgress {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 29, 49, 0.96),
+    rgba(8, 20, 34, 0.98)
+  );
+  border: 1px solid rgba(97, 230, 255, 0.16);
+  border-radius: 1.75rem;
+  padding: 1.35rem;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  gap: 1rem;
+  min-height: 100%;
+}
+
+.missionProgress h2 {
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  margin-bottom: 0;
+}
+
+.missionProgress p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.missionProgress h3 {
+  margin-bottom: 0;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(97, 230, 255, 0.08);
+  font-size: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .missionProgress {
+    padding: 1.6rem;
+  }
+}

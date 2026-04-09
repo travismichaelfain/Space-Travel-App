@@ -1,0 +1,31 @@
+.planetStats {
+  display: grid;
+  gap: 1rem;
+}
+
+.populationInfo,
+.spacecraftInfo {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 28, 46, 0.95),
+    rgba(8, 19, 33, 0.98)
+  );
+  border: 1px solid rgba(97, 230, 255, 0.12);
+  box-shadow: var(--shadow-sm);
+}
+
+.populationInfo h2,
+.spacecraftInfo h2 {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .planetStats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,29 @@
+.loadingWrapper {
+  min-height: 14rem;
+  display: grid;
+  place-items: center;
+  gap: 0.9rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  border: 0.24rem solid rgba(97, 230, 255, 0.12);
+  border-top-color: var(--accent);
+  animation: spin 0.9s linear infinite;
+  box-shadow: 0 0 18px rgba(53, 210, 255, 0.18);
+}
+
+.message {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

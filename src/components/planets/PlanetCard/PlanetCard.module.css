@@ -1,0 +1,160 @@
+.planetCard {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1.35rem;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 28, 46, 0.95),
+    rgba(8, 19, 33, 0.98)
+  );
+  border: 1px solid rgba(97, 230, 255, 0.12);
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    opacity var(--transition),
+    background-color var(--transition);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.planetCard h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.metricBlock {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.metricHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.metricLabel {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.metricValue {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(232, 244, 255, 0.92);
+}
+
+.previewDelta {
+  font-size: 0.84rem;
+  color: rgba(97, 230, 255, 0.9);
+}
+
+.previewBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #eaf8ff;
+  background: rgba(97, 230, 255, 0.12);
+  border: 1px solid rgba(97, 230, 255, 0.18);
+  white-space: nowrap;
+}
+
+.selectable {
+  cursor: pointer;
+  border-color: rgba(97, 230, 255, 0.26);
+}
+
+.selectable:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--accent-warm);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.24),
+    0 0 0 1px var(--accent-warm-soft),
+    0 0 28px var(--accent-warm-glow);
+}
+
+.planetCard:focus-visible {
+  outline: none;
+  border-color: var(--accent-warm);
+  box-shadow:
+    0 0 0 1px var(--accent-warm-soft),
+    0 0 20px var(--accent-warm-glow);
+}
+
+.disabled {
+  opacity: 0.62;
+}
+
+.selected {
+  border-color: rgba(97, 230, 255, 0.72);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(97, 230, 255, 0.14),
+    0 0 34px rgba(53, 210, 255, 0.26);
+  transform: translateY(-2px);
+}
+
+.previewMode {
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    opacity var(--transition),
+    background-color var(--transition);
+}
+
+.previewAffected {
+  opacity: 1;
+}
+
+.previewOrigin {
+  border-color: rgba(255, 184, 77, 0.45);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(255, 184, 77, 0.12),
+    0 0 30px rgba(255, 184, 77, 0.14);
+}
+
+.previewOrigin .previewBadge {
+  background: rgba(255, 184, 77, 0.14);
+  border-color: rgba(255, 184, 77, 0.2);
+  color: #fff1d8;
+}
+
+.previewTarget {
+  border-color: rgba(97, 230, 255, 0.5);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(97, 230, 255, 0.14),
+    0 0 32px rgba(53, 210, 255, 0.22);
+}
+
+.previewTarget .previewBadge {
+  background: rgba(97, 230, 255, 0.14);
+  border-color: rgba(97, 230, 255, 0.22);
+}
+
+.planetImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 1rem;
+}
