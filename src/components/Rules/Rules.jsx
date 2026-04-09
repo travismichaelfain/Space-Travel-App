@@ -6,19 +6,33 @@ const Rules = () => {
       <h3>Mission & Rules</h3>
       <ul>
         <li>
-          Evacuate Earth by redistributing its population to other planets.
+          <b>MISSION</b> - Evacuate Earth by transporting its population to
+          other planets.
         </li>
         <li>
-          Each spacecraft moves people equal to its capacity or remaining
-          population, whichever is lower.
+          <b>GOAL</b> - Move all people off Earth without exceeding any planet’s
+          limits.
         </li>
         <li>
-          A planet must have enough available population space to receive a
-          transfer.
+          <b>HOW IT WORKS</b> - Build your fleet. Then dispatch spacecrafts
+          around the galexy with the people of Earth. To dispatch, select a
+          spacecraft, then choose a destination planet. Each spacecraft carries
+          as many people as possible, up to its capacity or the remaining
+          population of the planet it's currently located (whichever is lower).
         </li>
-        <li>Each planet has a limited number of spacecraft it can host.</li>
-        <li>Spacecraft always carry people when dispatched.</li>
-        <li>Spacecraft can be decommissioned.</li>
+        <li>
+          <b>CONSTRAINTS</b> - Planets have a maximum population they can
+          support. Planets also have a limit on how many spacecraft they can
+          host. You cannot send a spacecraft to a planet that cannot accept both
+          the people and the ship.
+        </li>
+        <li>
+          <b>OTHER ACTIONS</b> - Spacecraft can be decommissioned to free up
+          space on crowded planets.
+        </li>
+        <li>
+          <b>VICTORY</b> - Earth’s population reaches zero.
+        </li>
       </ul>
     </div>
   );
