@@ -2,8 +2,10 @@
   display: grid;
   gap: 1.5rem;
   align-content: start;
+  justify-items: center; /* keeps everything centered horizontally */
 }
 
+/* Title */
 .allSpacecraftsPage > h1 {
   margin: 0;
   text-align: center;
@@ -11,6 +13,7 @@
   letter-spacing: 0.02em;
 }
 
+/* Top action buttons container */
 .actionGroup {
   display: flex;
   flex-wrap: wrap;
@@ -18,22 +21,28 @@
   gap: 1rem;
 }
 
+/* IMPORTANT: control wrapper width (handles Link/NavLink wrappers) */
 .actionGroup > * {
   flex: 0 0 auto;
+  width: 19rem;
 }
 
-.actionGroup :global(button) {
-  width: 19rem;
+/* Button fills its wrapper */
+.actionGroup > * :global(button) {
+  width: 100%;
   min-height: 3.15rem;
 }
 
+/* Grid of spacecraft cards */
 .spacecraftGrid {
   display: grid;
   gap: 1.25rem;
   grid-template-columns: 1fr;
   align-items: start;
+  width: 100%;
 }
 
+/* Tablet */
 @media (min-width: 48rem) {
   .allSpacecraftsPage {
     gap: 1.75rem;
@@ -44,6 +53,7 @@
   }
 }
 
+/* Desktop */
 @media (min-width: 72rem) {
   .spacecraftGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));

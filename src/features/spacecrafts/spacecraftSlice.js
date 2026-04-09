@@ -116,7 +116,7 @@ const spacecraftSlice = createSlice({
         state.isLoading = false;
         state.error = null;
 
-        const destroyedId = action.meta.arg.id;
+        const destroyedId = String(action.meta.arg.id);
 
         const removedShip = state.spacecrafts.find(
           (ship) => ship.id === destroyedId,
