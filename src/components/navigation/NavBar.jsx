@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import Button from "../common/Button/Button";
 import Modal from "../common/Modal/Modal";
@@ -13,6 +13,7 @@ import styles from "./NavBar.module.css";
 
 function NavBar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
 
   const [isSupportOpen, setIsSupportOpen] = useState(false);
@@ -37,14 +38,23 @@ function NavBar() {
     navigate("/");
   }
 
+  const isDashboardActive = location.pathname === "/app";
+  const isFleetActive = location.pathname.startsWith("/app/spacecrafts");
+  const isPlanetsActive = location.pathname.startsWith("/app/planets");
+
   return (
     <nav className={styles.navbar}>
-      <Button variant="dashboard" onClick={() => handleNavigate("/app")}>
+      <Button
+        variant="secondary"
+        className={isDashboardActive ? styles.activeNav : ""}
+        onClick={() => handleNavigate("/app")}
+      >
         Dashboard
       </Button>
 
       <Button
-        variant="primary"
+        variant="secondary"
+        className={isFleetActive ? styles.activeNav : ""}
         onClick={() => handleNavigate("/app/spacecrafts")}
       >
         Manage Fleet
@@ -52,6 +62,7 @@ function NavBar() {
 
       <Button
         variant="secondary"
+        className={isPlanetsActive ? styles.activeNav : ""}
         onClick={() => handleNavigate("/app/planets")}
       >
         View Planets

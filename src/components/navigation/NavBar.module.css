@@ -17,6 +17,12 @@
   backdrop-filter: blur(8px);
 }
 
+.activeNav {
+  background: rgba(97, 230, 255, 0.12);
+  border-color: rgba(97, 230, 255, 0.5);
+  box-shadow: 0 0 12px rgba(97, 230, 255, 0.15);
+}
+
 @media (min-width: 48rem) {
   .navbar {
     width: min(calc(100% - 2.5rem), var(--container));
