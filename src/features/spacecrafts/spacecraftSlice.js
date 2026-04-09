@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { resetApp } from "../../app/globalActions.js";
-import { generateId } from "../utils/id.js";
 import {
   fetchSpacecrafts,
   fetchSpacecraft,
@@ -12,9 +11,39 @@ import {
 const savedDecommissioned =
   JSON.parse(localStorage.getItem("decommissionedSpacecrafts")) || [];
 
+const savedTravelLogs =
+  JSON.parse(localStorage.getItem("spacecraftTravelLogs")) || {};
+
+function getSavedTravelLog(shipId) {
+  return savedTravelLogs[String(shipId)] || [];
+}
+
+function saveTravelLogs(spacecrafts) {
+  const travelLogMap = spacecrafts.reduce((acc, ship) => {
+    acc[String(ship.id)] = ship.travelLog || [];
+    return acc;
+  }, {});
+
+  localStorage.setItem("spacecraftTravelLogs", JSON.stringify(travelLogMap));
+}
+
+function normalizeShip(ship) {
+  return {
+    ...ship,
+    id: String(ship.id),
+    capacity: Number(ship.capacity),
+    currentLocation: Number(ship.currentLocation),
+    travelLog:
+      Array.isArray(ship.travelLog) && ship.travelLog.length
+        ? ship.travelLog.map((locationId) => Number(locationId))
+        : getSavedTravelLog(ship.id).map((locationId) => Number(locationId)),
+    isActive: true,
+  };
+}
+
 const initialState = {
   spacecrafts: [],
-  decommissionedSpacecrafts: savedDecommissioned,
+  decommissionedSpacecrafts: savedDecommissioned.map(normalizeShip),
   isLoading: false,
   error: null,
 };
@@ -28,41 +57,44 @@ const spacecraftSlice = createSlice({
     },
     updateSpacecraft: (state, action) => {
       const { id, ...spacecraftData } = action.payload;
-      const idx = state.spacecrafts.findIndex((ship) => ship.id === id);
+      const normalizedId = String(id);
+
+      const idx = state.spacecrafts.findIndex(
+        (ship) => ship.id === normalizedId,
+      );
+
       if (idx !== -1) {
-        state.spacecrafts[idx] = {
+        state.spacecrafts[idx] = normalizeShip({
           ...state.spacecrafts[idx],
           ...spacecraftData,
-        };
+          id: normalizedId,
+        });
       }
+
+      saveTravelLogs(state.spacecrafts);
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(resetApp, () => ({ ...initialState }))
+      .addCase(resetApp, () => ({
+        ...initialState,
+        decommissionedSpacecrafts: [],
+      }))
 
-      // FETCH ALL
       .addCase(fetchSpacecrafts.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
       .addCase(fetchSpacecrafts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.spacecrafts = action.payload.map((ship) => ({
-          ...ship,
-          id: ship.id ?? generateId(),
-          capacity: Number(ship.capacity),
-          currentLocation: Number(ship.currentLocation),
-          travelLog: ship.travelLog || [],
-          isActive: true,
-        }));
+        state.error = null;
+        state.spacecrafts = action.payload.map(normalizeShip);
       })
       .addCase(fetchSpacecrafts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload || action.error.message;
       })
 
-      // FETCH ONE
       .addCase(fetchSpacecraft.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -71,7 +103,8 @@ const spacecraftSlice = createSlice({
         state.isLoading = false;
         state.error = null;
 
-        const fetchedShip = action.payload;
+        const fetchedShip = normalizeShip(action.payload);
+
         const idx = state.spacecrafts.findIndex(
           (ship) => ship.id === fetchedShip.id,
         );
@@ -87,7 +120,6 @@ const spacecraftSlice = createSlice({
         state.error = action.payload || action.error.message;
       })
 
-      // BUILD
       .addCase(buildSpacecraft.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -95,19 +127,21 @@ const spacecraftSlice = createSlice({
       .addCase(buildSpacecraft.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.spacecrafts.push({
+
+        const builtShip = normalizeShip({
           ...action.payload,
-          currentLocation: Number(2),
-          travelLog: [],
-          id: generateId(),
+          currentLocation: action.payload.currentLocation ?? 2,
+          travelLog: action.payload.travelLog ?? [],
         });
+
+        state.spacecrafts.push(builtShip);
+        saveTravelLogs(state.spacecrafts);
       })
       .addCase(buildSpacecraft.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload || action.error.message;
       })
 
-      // DESTROY
       .addCase(destroySpacecraft.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -123,7 +157,13 @@ const spacecraftSlice = createSlice({
         );
 
         if (removedShip) {
-          state.decommissionedSpacecrafts.push(removedShip);
+          const alreadyDecommissioned = state.decommissionedSpacecrafts.some(
+            (ship) => ship.id === destroyedId,
+          );
+
+          if (!alreadyDecommissioned) {
+            state.decommissionedSpacecrafts.push(removedShip);
+          }
         }
 
         localStorage.setItem(
@@ -134,13 +174,14 @@ const spacecraftSlice = createSlice({
         state.spacecrafts = state.spacecrafts.filter(
           (ship) => ship.id !== destroyedId,
         );
+
+        saveTravelLogs(state.spacecrafts);
       })
       .addCase(destroySpacecraft.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload || action.error.message;
       })
 
-      // SEND TO PLANET
       .addCase(sendSpacecraftToPlanet.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -149,7 +190,8 @@ const spacecraftSlice = createSlice({
         state.isLoading = false;
         state.error = null;
 
-        const updatedSpacecrafts = action.payload.spacecrafts;
+        const updatedSpacecrafts =
+          action.payload.spacecrafts.map(normalizeShip);
 
         state.spacecrafts = state.spacecrafts.map((existingShip) => {
           const updatedShip = updatedSpacecrafts.find(
@@ -158,15 +200,23 @@ const spacecraftSlice = createSlice({
 
           if (!updatedShip) return existingShip;
 
+          const previousLocation = existingShip.currentLocation;
+          const previousLog = existingShip.travelLog || [];
+          const lastLoggedLocation = previousLog[previousLog.length - 1];
+
+          const nextTravelLog =
+            lastLoggedLocation === previousLocation
+              ? previousLog.slice(-3)
+              : [...previousLog.slice(-2), previousLocation];
+
           return {
             ...existingShip,
             ...updatedShip,
-            travelLog: [
-              ...existingShip.travelLog.slice(-2),
-              existingShip.currentLocation,
-            ],
+            travelLog: nextTravelLog,
           };
         });
+
+        saveTravelLogs(state.spacecrafts);
       })
       .addCase(sendSpacecraftToPlanet.rejected, (state, action) => {
         state.isLoading = false;

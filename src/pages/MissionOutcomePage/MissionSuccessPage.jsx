@@ -9,8 +9,9 @@ function MissionSuccessPage() {
   const navigate = useNavigate();
 
   function handlePlayAgain() {
+    localStorage.clear();
     dispatch(resetApp());
-    navigate("/app", { replace: true });
+    navigate("/", { replace: true });
   }
 
   return (
