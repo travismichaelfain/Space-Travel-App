@@ -1,6 +1,8 @@
 🚀 Space Travel Simulation Dashboard
 
-A state-driven simulation application modeling interplanetary logistics, resource constraints, and fleet management. Built to demonstrate advanced React architecture, scalable state management, and real-world application patterns.
+A state-driven simulation application modeling interplanetary logistics, resource constraints, and fleet management. Built as a focused showcase of advanced React architecture, this project emphasizes scalable state management, derived data patterns, and intentional UI data flow in complex systems.
+
+Originally based on a bootcamp exercise, this project was intentionally expanded into a React architecture showcase to demonstrate the ability to design and manage a complex, state-driven user interface.
 
 ---
 
