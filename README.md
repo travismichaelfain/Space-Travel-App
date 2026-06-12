@@ -1,110 +1,103 @@
-🚀 Space Travel Simulation Dashboard
+# 🚀 Space Travel Simulation Dashboard
 
 A state-driven simulation application modeling interplanetary logistics, resource constraints, and fleet management. Built as a focused showcase of advanced React architecture, this project emphasizes scalable state management, derived data patterns, and intentional UI data flow in complex systems.
 
-Originally based on a bootcamp exercise, this project was intentionally expanded into a React architecture showcase to demonstrate the ability to design and manage a complex, state-driven user interface.
+> **Note on Origins:** Originally based on a bootcamp exercise, this project was intentionally expanded into a React architecture showcase to demonstrate the ability to design and manage a complex, state-driven user interface.
 
 ---
 
-🧠 Overview
+## 🧠 Overview
 
-The Space Travel Simulation Dashboard is a front-end application designed to simulate the movement of spacecraft between planets under real-world constraints such as population capacity, fleet limitations, and resource allocation.
+The Space Travel Simulation Dashboard is a front-end application designed to simulate the movement of spacecraft between planets under real-world constraints such as population capacity, fleet limitations, and resource allocation. 
 
 This project emphasizes **application architecture over surface-level features**, showcasing how complex systems can be modeled and managed effectively within a React environment.
 
 ---
 
- ⚙️ Core Features
+## ⚙️ Core Features
 
-* Fleet management system with active and decommissioned spacecraft
-* Planetary system with population and capacity constraints
-* Dispatch workflow with real-time validation logic
-* Derived metrics and system state visualization
-* Persistent state using local storage (mock backend)
-* Multi-page navigation using React Router
+*   **Fleet Management:** System tracking active and decommissioned spacecraft.
+*   **Planetary System:** Dynamic tracking with population and capacity constraints.
+*   **Dispatch Workflow:** Robust transactional routing with real-time validation logic.
+*   **System State Visualization:** Real-time metrics derived directly from core state.
+*   **Persistent State:** Local storage utilization acting as a mock backend layer.
+*   **Multi-Page Navigation:** Clean routing implementation using React Router.
 
 ---
 
-🏗️ Technical Focus
+## 🏗️ Technical Focus
 
 This project is intentionally engineered to demonstrate **production-level React patterns**, including:
 
-* **Centralized state management** using Redux Toolkit
-* **Derived state over duplicated state** via memoized selectors
-* **Predictable data flow** with clearly defined state ownership
-* **Component reusability and separation of concerns**
-* **Asynchronous state handling** with consistent loading/error patterns
-* **Normalized state structure** for scalability
+*   **Centralized State Management:** Implemented using Redux Toolkit.
+*   **Derived State Over Duplicated State:** Calculated via memoized selectors to optimize performance.
+*   **Predictable Data Flow:** Built with clearly defined state ownership.
+*   **Clean Architecture:** Strict component reusability and separation of concerns.
+*   **Asynchronous State Handling:** Designed with consistent loading/error patterns.
+*   **Normalized State Structure:** Organized to ensure long-term database and client scalability.
 
 ---
 
-🧩 System Design Highlights
+## 🧩 System Design Highlights
 
-Rather than treating UI as isolated components, this application models a **connected system**:
+Rather than treating the UI as a collection of isolated components, this application models a **connected system**:
+*   Spacecraft and planets interact dynamically through shared constraints.
+*   Dispatch logic strictly enforces business rules *before* state mutation occurs.
+*   The UI reflects **derived system outcomes**, rather than raw, duplicated data.
 
-* Spacecraft and planets interact through shared constraints
-* Dispatch logic enforces business rules before state mutation
-* UI reflects **derived system outcomes**, not raw data
-
-This mirrors how real-world applications manage:
-
-* inventory systems
-* resource allocation
-* constraint-based workflows
+This architecture directly mirrors how real-world enterprise applications manage:
+*   Inventory systems
+*   Resource allocation
+*   Constraint-based workflows
 
 ---
 
-🔧 Tech Stack
+## 🔧 Tech Stack
 
-* React (Vite)
-* Redux Toolkit
-* React Router
-* CSS Modules
-* LocalStorage (mock API layer)
-
----
-
-🚧 Ongoing Development
-
-This project is actively being expanded to further demonstrate advanced React and frontend architecture.
-
-Planned improvements include:
-
-* Refactoring state architecture to further minimize global state usage
-* Enhancing selector logic for more advanced derived system metrics
-* Expanding UI feedback for clearer system state transitions
-* Improving routing structure with data loading patterns
-* Adding comprehensive loading, error, and empty states
-* Increasing component abstraction and reusability
-
-These updates are focused on evolving the project from a strong simulation into a **fully polished, production-ready frontend system**.
+*   **Frontend Framework:** React (Vite)
+*   **State Management:** Redux Toolkit
+*   **Routing:** React Router
+*   **Styling:** CSS Modules
+*   **Data Layer:** LocalStorage (Mock API layer)
 
 ---
 
-🎯 Purpose
+## 🚧 Ongoing Development
+
+This project is actively being expanded to further demonstrate advanced React and frontend architecture. Planned improvements include:
+
+1.  **State Optimization:** Refactoring state architecture to further minimize global state usage.
+2.  **Advanced Selectors:** Enhancing selector logic for more sophisticated derived system metrics.
+3.  **UI Transitions:** Expanding feedback loops for clearer system state transitions.
+4.  **Data Loading Patterns:** Improving routing structure using advanced data loading patterns.
+5.  **Defensive UI:** Adding comprehensive loading, error, and empty states.
+6.  **Abstraction:** Increasing component abstraction and reusability across the ecosystem.
+
+These updates are focused on evolving the project from a strong simulation into a **fully polished, production-ready frontend system.**
+
+---
+
+## 🎯 Purpose
 
 This project is part of a larger portfolio focused on demonstrating:
+*   Advanced React architecture
+*   Real-world state management patterns
+*   Thoughtful system design in frontend applications
 
-* Advanced React architecture
-* Real-world state management patterns
-* Thoughtful system design in frontend applications
-
-It is intentionally designed to go beyond standard CRUD applications and instead highlight **how complex logic and state relationships are handled in scalable systems**.
-
----
-
-📌 Status
-
-Actively in development — current version demonstrates core system architecture, with ongoing refinements focused on scalability, maintainability, and production-level polish.
+It is intentionally designed to go beyond standard CRUD applications and instead highlight **how complex logic and state relationships are handled in scalable systems.**
 
 ---
 
-🔗 Live Demo / Portfolio
-
-(Coming soon)
+## 📌 Status
+*   **Current Status:** Actively in development. 
+*   **Focus:** Current version demonstrates core system architecture, with ongoing refinements focused on scalability, maintainability, and production-level polish.
 
 ---
 
-📬 Contact
+## 🔗 Live Demo / Portfolio
+*   *Coming soon*
 
-If you're interested in discussing the architecture or approach behind this project, feel free to reach out or connect.
+---
+
+## 📬 Contact
+If you're interested in discussing the architecture, state-normalization choices, or design approach behind this project, feel free to reach out or connect!
